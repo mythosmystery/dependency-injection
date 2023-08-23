@@ -1,5 +1,6 @@
 import { Duration, InvoiceItem } from './dependencies/payment'
 import { PaymentType, paymentFactory } from './factories/payment.factory'
+import { schedulerFactory } from './factories/scheduler.factory'
 import { subscriptionFactory } from './factories/subscription.factory'
 
 const chargeToPaymentMethod = async (
@@ -41,3 +42,9 @@ const getInvoices = async (orgId: string, paymentType: PaymentType) => {
 
   return invoices
 }
+
+const { schedule } = schedulerFactory()
+
+const job = schedule('* * * * * *', () => {
+  console.log('hello')
+})
