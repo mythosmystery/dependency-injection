@@ -9,7 +9,9 @@ const chargeToPaymentMethod = async (
   invoiceItems: InvoiceItem[],
   purchaseType: 'fortify' | 'engage' | 'credit-add'
 ) => {
-  const { purchase } = paymentFactory(purchaseType === 'credit-add' ? 'card' : 'credit')
+  const { purchase } = paymentFactory(
+    purchaseType === 'credit-add' ? 'card' : 'credit'
+  )
 
   //do stuff
 
@@ -20,7 +22,11 @@ const chargeToPaymentMethod = async (
 
 type Region = {}
 
-const createSubscription = async (orgId: string, region: Region, duration: Duration) => {
+const createSubscription = async (
+  orgId: string,
+  region: Region,
+  duration: Duration
+) => {
   const { subscribe } = subscriptionFactory(orgId)
 
   const price = calculatePrice(region)
