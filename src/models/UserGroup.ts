@@ -5,7 +5,7 @@ export interface UserGroup {
   id: number
   name: string
   description?: string
-  permissions: Permission[]
+  permission: Permission
   organization: Organization
   parent?: User | UserGroup
   users: User[] | UserGroup[]
@@ -17,14 +17,14 @@ export interface Role {
   id: number
   name: string
   description?: string
-  attrs: Attrs[]
+  attrs: Attr[]
   createdAt: string
   updatedAt: string
 }
 
 export type Permission = {
   role: Role
-  attrs: Attr[]
+  attrs?: Attr[]
 }
 
 export type Attrs = typeof Attrs
@@ -49,6 +49,10 @@ export const Attrs = {
     Create: 'organization:user:create',
     Update: 'organization:user:update',
     Delete: 'organization:user:delete'
+  },
+  Fortify: {
+    Create: 'fortify:export:create',
+    Read: 'fortify:search:read'
   }
 } as const
 
